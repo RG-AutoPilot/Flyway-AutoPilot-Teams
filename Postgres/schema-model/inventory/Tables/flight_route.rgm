@@ -1,0 +1,30 @@
+table "inventory"."flight_route" {
+  primaryKey = {
+    columns = [
+      "routeid"
+    ]
+    name = "flight_route_pkey"
+    objectType = primaryKey
+  }
+  owner = postgres
+  columns = (
+    column "routeid" {
+      type = integer
+      null = NOT NULL
+      generatedAsIdentity = ALWAYS
+    }
+    column "departure_city" {
+      type = character varying(50)
+      null = NOT NULL
+    }
+    column "arrival_city" {
+      type = character varying(50)
+      null = NOT NULL
+    }
+    column "distance" {
+      type = integer
+      null = NOT NULL
+    }
+  )
+}
+

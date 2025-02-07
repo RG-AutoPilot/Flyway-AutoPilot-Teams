@@ -1,0 +1,55 @@
+databaseType = "PostgreSql"
+name = "AutoPilot - FastTrack (PG)"
+id = "d9495d20-78ab-41d3-9f59-0da558541f7b"
+
+[flywayDesktop]
+developmentEnvironment = "development"
+shadowEnvironment = "shadow"
+schemaModel = "./schema-model"
+
+[flywayDesktop.generate]
+undoScripts = true
+
+[redgateCompare]
+filterFile = "filter.rgf"
+
+[flyway]
+mixed = true
+outOfOrder = true
+locations = [ "filesystem:migrations" ]
+validateMigrationNaming = true
+baselineVersion = "001"
+baselineOnMigrate = true
+
+[environments.development]
+url = "jdbc:postgresql://localhost:5432/autopilot_dev"
+schemas = [ "public", "inventory", "customers", "sales" ]
+displayName = "Development database"
+
+[environments.shadow]
+url = "jdbc:postgresql://localhost:5432/autopilot_shadow"
+schemas = [ "public", "inventory", "customers", "sales" ]
+displayName = "Shadow database"
+provisioner = "clean"
+
+[environments.Test]
+url = "jdbc:postgresql://localhost:5432/autopilot_test"
+schemas = [ "public", "inventory", "customers", "sales" ]
+displayName = "Test"
+
+[environments.Prod]
+url = "jdbc:postgresql://localhost:5432/autopilotprod"
+schemas = [ "public", "inventory", "customers", "sales" ]
+displayName = "Prod"
+
+[environments.Build]
+url = "jdbc:postgresql://localhost:5432/autopilotbuild"
+schemas = [ "public", "inventory", "customers", "sales" ]
+displayName = "Build"
+provisioner = "clean"
+
+[environments.Check]
+url = "jdbc:postgresql://localhost:5432/autopilotcheck"
+schemas = [ "public", "inventory", "customers", "sales" ]
+displayName = "Check"
+provisioner = "clean"

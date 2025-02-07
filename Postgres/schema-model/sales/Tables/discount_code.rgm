@@ -1,0 +1,41 @@
+table "sales"."discount_code" {
+  primaryKey = {
+    columns = [
+      "discount_id"
+    ]
+    name = "discount_code_pkey"
+    objectType = primaryKey
+  }
+  owner = postgres
+  columns = (
+    column "discount_id" {
+      type = integer
+      null = NOT NULL
+      generatedAsIdentity = ALWAYS
+    }
+    column "code" {
+      type = character varying(20)
+      null = NOT NULL
+    }
+    column "discount_percentage" {
+      type = numeric(4,2)
+    }
+    column "expiry_date" {
+      type = timestamp with time zone
+    }
+  )
+}
+
+index "sales"."discount_code_code_key" {
+  table = "sales"."discount_code"
+  type = btree
+  columns = <
+    {
+      definition = code
+    }
+
+  >
+  isUnique = True
+  isConstraint = true
+}
+
