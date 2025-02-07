@@ -1,0 +1,37 @@
+databaseType = "GoogleBigQuery"
+id = "269237ac-1d78-498c-a824-623146d5a2fb"
+name = "FlywayBigQuery"
+
+[flyway]
+locations = [ "filesystem:migrations" ]
+mixed = true
+outOfOrder = true
+schemaModelLocation = "schema-model"
+validateMigrationNaming = true
+
+[flyway.check]
+majorTolerance = 0
+
+[flywayDesktop]
+developmentEnvironment = "development"
+shadowEnvironment = "shadow"
+
+[redgateCompare]
+filterFile = "filter.rgf"
+
+[environments.Test]
+url = "jdbc:bigquery://https://www.googleapis.com/bigquery/v2:443;ProjectId=flywaybigquery;OAuthType=0;OAuthServiceAcctEmail=huxleyflyway@flywaybigquery.iam.gserviceaccount.com;OAuthPvtKeyPath=C:\\flywaybigquery-d5743e956421.json;"
+displayName = "Test Database"
+schemas = ["FlywayTest"]
+user = ""
+password = ""
+defaultSchema = "FlywayTest"
+
+
+[environments.Prod]
+url = "jdbc:bigquery://https://www.googleapis.com/bigquery/v2:443;ProjectId=flywaybigquery;OAuthType=0;OAuthServiceAcctEmail=huxleyflyway@flywaybigquery.iam.gserviceaccount.com;OAuthPvtKeyPath=C:\\flywaybigquery-d5743e956421.json;"
+displayName = "Test Database"
+schemas = ["FlywayProd"]
+user = ""
+password = ""
+defaultSchema = "FlywayProd"

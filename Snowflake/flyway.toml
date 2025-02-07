@@ -1,0 +1,27 @@
+databaseType = "Snowflake"
+id = "086e4f2e-f933-4922-ae2d-61cc3890f9d5"
+name = "HuxS"
+
+[flyway]
+locations = [ "filesystem:migrations" ]
+mixed = true
+outOfOrder = true
+validateMigrationNaming = true
+
+  [flyway.check]
+  majorTolerance = 0
+
+[flywayDesktop]
+developmentEnvironment = "development"
+schemaModel = "schema-model"
+shadowEnvironment = "shadow"
+
+[redgateCompare]
+filterFile = "filter.rgf"
+
+[environments.prod]
+url = "jdbc:snowflake://rv88946.west-europe.azure.snowflakecomputing.com/?db=HUXSNOWFLAKE_PROD&warehouse=COMPUTE_WH&jdbc_query_result_format=json"
+
+[environments.build]
+url = "jdbc:snowflake://rv88946.west-europe.azure.snowflakecomputing.com/?db=HUXSNOWFLAKE_BUILD&warehouse=COMPUTE_WH&jdbc_query_result_format=json"
+FLYWAY_PLACEHOLDERS_TABLEENVNAME="buildtable"
